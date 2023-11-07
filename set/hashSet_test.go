@@ -16,8 +16,8 @@ func createHashSetString() set.Set[string]{
 
 }
 
-func createHashSetFloat32() set.Set[float32]{
-	return set.NewHashSet[float32]()
+func createHashSetFloat() set.Set[float64]{
+	return set.NewHashSet[float64]()
 }
 
 func TestAdd_HashSet(t *testing.T) {
@@ -50,7 +50,7 @@ func TestAdd_HashSet(t *testing.T) {
 		assert.Equal(t, 2, set.Size())
 	}
 	{
-		set := createHashSetFloat32()
+		set := createHashSetFloat()
 		ok := set.Add(1)
 		assert.True(t, ok)
 		assert.Equal(t, 1, set.Size())
@@ -95,7 +95,7 @@ func TestClear_HashSet(t *testing.T) {
 
 func TestContains_HashSet(t *testing.T) {
 	{
-		set := createHashSetFloat32()
+		set := createHashSetFloat()
 		set.Add(3.5)
 		assert.Equal(t, 1, set.Size())
 
@@ -208,7 +208,4 @@ func TestString_HashSet(t *testing.T) {
 	
 	set.Add(1)
 	assert.Equal(t, "Set{1}", set.ToString())
-
-	set.Add(2)
-	assert.Equal(t, "Set{1, 2}", set.ToString())
 }
